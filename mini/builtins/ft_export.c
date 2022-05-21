@@ -6,7 +6,7 @@
 /*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:02:55 by rezzahra          #+#    #+#             */
-/*   Updated: 2022/05/21 19:14:22 by mac              ###   ########.fr       */
+/*   Updated: 2022/05/21 19:38:30 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,8 +170,10 @@ int env_add(char *key, char *key_val, char ***env)
 	r_env[i] = malloc(sizeof(char *) * (strlen(key) + strlen(key_val) + 2));
 	r_env[i][0] = 0;
 	strcat(r_env[i], key);
-	strcat(r_env[i], "=");
-	strcat(r_env[i], key_val);
+	if (key_val)
+		strcat(r_env[i], "=");
+	if (key_val)
+		strcat(r_env[i], key_val);
 	r_env[i + 1] = 0;
 	free(*env);
 	*env = r_env;
@@ -225,13 +227,15 @@ int ft_export(char **args)
 				if (!env_add(*args, ft_strchr(*args, '=') + 1, &env))
 					return (0);
 			}
-			else
+			else if (ft_strchr(*args,'=') && args[ft_strlen(args) - 1] == '=')
 			{
 				if (!env_add(*args, "", &env))
 					return (0);
 			}
-			else if (ft_strchr(*args, '=') && *args[ft_strlen(*args) - 1] == '=')
 			else
+				if (!env_add(*args, NULL, &env))
+					return (0);
+			args++;
 		}
 	}
 	return 0;
