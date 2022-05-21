@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: rezzahra <rezzahra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 18:20:45 by mac               #+#    #+#             */
-/*   Updated: 2022/05/21 19:23:14 by mac              ###   ########.fr       */
+/*   Updated: 2022/05/22 00:07:34 by rezzahra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int		isalldigit(char *str);
 int		lenarr(char **arr);
 char	*get_var(char **env, char *key);
 void	putendl_fd(char *str, int fd);
-char *replace_env(char **str, int *i, char **env);
-int env_len(char **env);
-char **dup_env(char **env);
-int env_modi(char *key, char *key_val, char ***env);
-int env_add(char *key, char *key_val, char ***env);
-char *replace_env_var(char *str, char **env);
+char 	*replace_env(char **str, int *i, char **env);
+int 	env_len(char **env);
+char 	**dup_env(char **env);
+int 	env_modi(char *key, char *key_val, char ***env);
+int 	env_add(char *key, char *key_val, char ***env);
+char 	*replace_env_var(char *str, char **env);
 
 
 // void	env_add_back(t_env **lst, t_env *new);
